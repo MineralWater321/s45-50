@@ -10,9 +10,16 @@ export default function CourseCard({courseProp}){
     //State hook - used to keep track of information related to individual components
     //Syntax: const [getter, setter] = useState(initialGetterValue);
     const [count, setCount] = useState(0);
+    const [seats, setSeats] = useState(30);
 
     function enroll(){
-        setCount(count + 1);
+        if (seats !== 0){
+            setSeats(seats - 1);
+            setCount(count + 1);
+        }
+        else{
+            alert('No seats left');
+        }
     }
 
     return(
