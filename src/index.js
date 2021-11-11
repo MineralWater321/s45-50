@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+//import the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-/* ReactDOM.render(
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 
   document.getElementById('root')
-); */
+);
 
-const name = 'John Smith';
+/* const name = 'John Smith';
 const user = {
   firstName: 'Jane',
   lastName: 'Doe'
@@ -25,4 +27,4 @@ const element = <h1>Hello, {formatName(user)}</h1>
 ReactDOM.render(
   element,
   document.getElementById('root')
-);
+); */
