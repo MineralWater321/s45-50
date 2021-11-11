@@ -1,27 +1,42 @@
-import { Row, Col, Card, Button} from 'react-bootstrap';
+import { useState } from 'react';
+//Proptypes - used to valdate props
+import PropTypes from 'prop-types';
+import { Card, Button} from 'react-bootstrap';
 
 export default function CourseCard({courseProp}){
     // console.log(props);
     const {name, description, price} = courseProp;
+
+    //State hook - used to keep track of information related to individual components
+    //Syntax: const [getter, setter] = useState(initialGetterValue);
+    const [count, setCount] = useState(0);
+
+    function enroll(){
+        setCount(count + 1);
+    }
+
     return(
-        <Row  className="mt-3 mb-3">
-            <Col xs={12} md={12}>
-                <Card className="courseCard p-3">
-                    <Card.Body>
-                        <Card.Title>
-                            <h4>{name}</h4>
-                        </Card.Title>
-                        <Card.Text>
-                                <strong>Description</strong><br />
-                                {description}<br />
-                                <br />
-                                <strong>Price: </strong><br />
-                                PhP {price}
-                        </Card.Text>
-                        <Button variant="primary">Enroll</Button>
-                    </Card.Body>
-                </Card>
-            </Col>
-        </Row>
+        <Card className="mb-3">
+            <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Subtitle>Description</Card.Subtitle>
+                <Card.Text>{description}</Card.Text>     
+                <Card.Subtitle>Price:</Card.Subtitle>
+                <Card.Text>PhP {price}</Card.Text>
+                <Card.Text>Enrollees: {count}</Card.Text>
+                <Button variant="primary" onClick={enroll}>Enroll</Button>
+            </Card.Body>
+        </Card>
+            
     )
+}
+
+//Check validity of the PropTypes
+CourseCard.propTypes = {
+    //"shape" method is used to check if a prop object conforms to a specific shape
+    course: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+    })
 }

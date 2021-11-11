@@ -1,14 +1,20 @@
 import { Fragment } from 'react';
 import CourseCard from '../components/CourseCard';
 import coursesData from "../data/coursesData";
-import React from "react";
 
 export default function Courses(){
-    console.log(coursesData);
-    console.log(coursesData[0]);
+    // console.log(coursesData);
+    // console.log(coursesData[0]);
+    
+    const courses = coursesData.map(course => {
+        return(
+            <CourseCard key={course.id} courseProp={course} />
+        )
+    })
+    
     return (
         <Fragment>
-            <CourseCard courseProp={coursesData[0]} />
+            {courses}
         </Fragment>
     )
 }
