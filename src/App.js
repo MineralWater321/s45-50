@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { Container } from 'react-bootstrap';
 import AppNavbar from './components/AppNavbar';
-import Banner from './components/Banner'
-import Highlights from './components/Highlights';
+// import Banner from './components/Banner'
+// import Highlights from './components/Highlights';
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
@@ -10,8 +11,7 @@ function App() {
     <Fragment>
       <AppNavbar />
       <Container>
-        <Banner />
-        <Highlights />
+        <Home />
       </Container>      
     </Fragment>
   );
