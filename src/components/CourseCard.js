@@ -11,10 +11,10 @@ export default function CourseCard(){
                         </Card.Title>
                         <Card.Text>
                             <p>
-                                Description: <br />
+                                <strong>Description: </strong><br />
                                 This is a sample course offering. <br />
                                 <br />
-                                Price: <br />
+                                <strong>Price: </strong><br />
                                 PhP 40,000
                             </p>
                         </Card.Text>
