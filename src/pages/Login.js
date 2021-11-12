@@ -1,74 +1,75 @@
 import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-export default function Login(){
-    // State hooks to store the values of the input fields
-    const [email, setEmail] = useState('');
-    const [password1, setPassword1] = useState('');
-    //State to determine whether the submit button is enabled or not
-    const [isActive, setIsActive] = useState(false);
+export default function Login(props) {
+		// State hooks to store the values of the input fields
+		const [email, setEmail] = useState('');
+	    const [password, setPassword] = useState('');
+	    // State to determine whether submit button is enabled or not
+	    const [isActive, setIsActive] = useState(false);
 
-   console.log(email);
-   console.log(password1);
+	    function authenticate(e) {
 
-   //Function to simulate user login
-   function loginUser(e){
-       e.preventDefault();
-       
-       setEmail('');
-       setPassword1('');
+	        // Prevents page redirection via form submission
+	        e.preventDefault();
 
-       alert('You are now logged in.')
-   }
+            //Set the email of the authenticated user in the local storage
+            //Syntax: localStorage.setItem('propertyName', value);
+            localStorage.setItem('email', email)
 
-   useEffect(() => {
-        //Validate to enable submit button when all fields are populated and both passwords match
-        if((email !== '' && password1 !== ''))
-        {
-            setIsActive(true);
-        }
-        else{
-            setIsActive(false);
-        } 
-   }, [email, password1])
+	        // Clear input fields after submission
+	        setEmail('');
+	        setPassword('');
 
-    return(
-        <Form onSubmit={(e) => loginUser(e)}>
-            <h1>Login</h1>
-            {/* Bind the input states via 2-way binding */}
+	        alert(`${email} has been verified! Welcome back!`);
+
+	    }
+
+
+		useEffect(() => {
+
+	        // Validation to enable submit button when all fields are populated and both passwords match
+	        if(email !== '' && password !== ''){
+	            setIsActive(true);
+	        }else{
+	            setIsActive(false);
+	        }
+
+	    }, [email, password]);
+
+
+    return (
+        <Form onSubmit={(e) => authenticate(e)}>
             <Form.Group controlId="userEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
                     type="email" 
                     placeholder="Enter email" 
                     value={email}
-                    onChange = { e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
             </Form.Group>
 
-            <Form.Group controlId="password1" className="pb-2">
+            <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control 
                     type="password" 
-                    placeholder="Password"
-                    value={password1}
-                    onChange={ e => setPassword1(e.target.value)} 
+                    placeholder="Password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
             </Form.Group>
-            
-            {/* Conditionally render the submit button based on the isActive state */}
             { isActive ? 
                 <Button variant="primary" type="submit" id="submitBtn">
                     Submit
                 </Button>
-                :
+                : 
                 <Button variant="danger" type="submit" id="submitBtn" disabled>
                     Submit
                 </Button>
             }
-            
         </Form>
     )
 }
