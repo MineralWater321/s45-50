@@ -11,8 +11,8 @@ export default function Login(){
    console.log(email);
    console.log(password1);
 
-   //Function to simulate user registration
-   function registerUser(e){
+   //Function to simulate user login
+   function loginUser(e){
        e.preventDefault();
        
        setEmail('');
@@ -33,7 +33,7 @@ export default function Login(){
    }, [email, password1])
 
     return(
-        <Form onSubmit={(e) => registerUser(e)}>
+        <Form onSubmit={(e) => loginUser(e)}>
             <h1>Login</h1>
             {/* Bind the input states via 2-way binding */}
             <Form.Group controlId="userEmail">
