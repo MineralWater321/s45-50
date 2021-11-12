@@ -40,6 +40,7 @@ export default function Login(props) {
 
     return (
         <Form onSubmit={(e) => authenticate(e)}>
+            <h1>Login</h1>
             <Form.Group controlId="userEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 

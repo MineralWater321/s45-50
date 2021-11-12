@@ -5,6 +5,6 @@ export default function Logout(){
 
     //Redirect back to login
     return(
-        <Redirect to="/login" />
+        <Redirect to="./login" />
     )
 }

@@ -5,15 +5,18 @@
 // import { Row } from 'react-bootstrap';
 // import { Column } from 'react-bootstrap'
 import { Button, Row, Col} from 'react-bootstrap';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import Error from '../pages/Error';
 
 export default function Banner(){
     return(
         <Row>
             <Col className="p-5">
-                 <h1>Zuitt Coding Bootcamp</h1>
-                 <p>Opportunities for everyone, everywhere</p>
-                 <Button variant="primary">Enroll now</Button>
+                <h1>Zuitt Coding Bootcamp</h1>
+                <p>Opportunities for everyone, everywhere</p>
+                <Button variant="primary">Enroll now</Button>
             </Col>
-        </Row>
+        </Row>      
     )    
 }

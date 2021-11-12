@@ -18,7 +18,7 @@ export default function AppNavbar(){
                 <Nav className="ml-auto">
                     <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
                     <Nav.Link as={NavLink} to="/courses" exact>Courses</Nav.Link>
-                    {(user.email !== null) ? 
+                    {(user !== null) ? 
                         <Nav.Link as={NavLink} to="/logout" exact>Logout</Nav.Link>
                         :
                         <Fragment>
