@@ -38,6 +38,7 @@ export default function Register(){
     return(
         <Form onSubmit={(e) => registerUser(e)}>
             {/* Bind the input states via 2-way binding */}
+            <h1>Register</h1>
             <Form.Group controlId="userEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
