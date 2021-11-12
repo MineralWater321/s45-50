@@ -5,8 +5,6 @@
 // import { Row } from 'react-bootstrap';
 // import { Column } from 'react-bootstrap'
 import { Button, Row, Col} from 'react-bootstrap';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
 import Error from '../pages/Error';
 
 export default function Banner(){
