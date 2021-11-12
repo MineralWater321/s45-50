@@ -5,7 +5,6 @@
 // import { Row } from 'react-bootstrap';
 // import { Column } from 'react-bootstrap'
 import { Button, Row, Col} from 'react-bootstrap';
-import Error from '../pages/Error';
 
 export default function Banner(){
     return(
