@@ -1,26 +1,27 @@
 import { useState } from 'react';
 //Proptypes - used to valdate props
 import PropTypes from 'prop-types';
-import { Card, Button} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function CourseCard({courseProp}){
     // console.log(props);
-    const {name, description, price} = courseProp;
+    const { _id, name, description, price} = courseProp;
 
     //State hook - used to keep track of information related to individual components
     //Syntax: const [getter, setter] = useState(initialGetterValue);
-    const [count, setCount] = useState(0);
-    const [seats, setSeats] = useState(30);
+    // const [count, setCount] = useState(0);
+    // const [seats, setSeats] = useState(30);
 
-    function enroll(){
-        if (seats !== 0){
-            setSeats(seats - 1);
-            setCount(count + 1);
-        }
-        else{
-            alert('No seats left');
-        }
-    }
+    // function enroll(){
+    //     if (seats !== 0){
+    //         setSeats(seats - 1);
+    //         setCount(count + 1);
+    //     }
+    //     else{
+    //         alert('No seats left');
+    //     }
+    // }
 
     return(
         <Card className="mb-3">
@@ -30,8 +31,8 @@ export default function CourseCard({courseProp}){
                 <Card.Text>{description}</Card.Text>     
                 <Card.Subtitle>Price:</Card.Subtitle>
                 <Card.Text>PhP {price}</Card.Text>
-                <Card.Text>Enrollees: {count}</Card.Text>
-                <Button variant="primary" onClick={enroll}>Enroll</Button>
+                <Link className="btn btn-primary" to={`/courses/${_id}`}>Details</Link>
+                {/* <Button variant="primary" onClick={enroll}>Enroll</Button> */}
             </Card.Body>
         </Card>
             

@@ -8,7 +8,8 @@ export default function Logout(){
     unsetUser();
 
     useEffect(() => {
-        setUser({email: null});
+        //Set the user state to its original value
+        setUser({id: null});
     })
 
     //Redirect back to login
