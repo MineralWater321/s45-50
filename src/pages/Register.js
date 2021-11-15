@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import UserContext from '../UserContext';
 
 export default function Register(){
     // State hooks to store the values of the input fields
     const [email, setEmail] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
+    const {user, setUser} = useContext(UserContext);
     //State to determine whether the submit button is enabled or not
     const [isActive, setIsActive] = useState(false);
 
@@ -36,6 +39,9 @@ export default function Register(){
    }, [email, password1, password2])
 
     return(
+        (user.email !== null) ?
+            <Redirect to="/courses" />
+        :
         <Form onSubmit={(e) => registerUser(e)}>
             {/* Bind the input states via 2-way binding */}
             <h1>Register</h1>
