@@ -1,7 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import UserContext from '../UserContext';
 
 export default function Login(props) {
+        //Allows us to consume the User context object and its properties to use for user validation
+        const {user, setUser} = useContext(UserContext);
 		// State hooks to store the values of the input fields
 		const [email, setEmail] = useState('');
 	    const [password, setPassword] = useState('');
@@ -15,7 +19,12 @@ export default function Login(props) {
 
             //Set the email of the authenticated user in the local storage
             //Syntax: localStorage.setItem('propertyName', value);
-            localStorage.setItem('email', email)
+            localStorage.setItem('email', email);
+
+            //Set the global user state to have properties obtained from local storage
+            setUser({
+                email: localStorage.getItem('email')
+            });
 
 	        // Clear input fields after submission
 	        setEmail('');
@@ -39,6 +48,9 @@ export default function Login(props) {
 
 
     return (
+        (user.email !== null) ?
+            <Redirect to="/courses" />
+        :
         <Form onSubmit={(e) => authenticate(e)}>
             <h1>Login</h1>
             <Form.Group controlId="userEmail">
@@ -72,5 +84,7 @@ export default function Login(props) {
                 </Button>
             }
         </Form>
+
+        
     )
 }

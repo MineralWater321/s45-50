@@ -4,9 +4,16 @@ import Highlights from '../components/Highlights';
 // import CourseCard from '../components/CourseCard';
 
 export default function Home(){
+    const data={
+		title: "Zuitt Coding Bootcamp",
+		content: "Opportunities for everyone, everywhere",
+		destination: "/courses",
+		label: "Enroll now!"
+	}
+
     return(
         <Fragment>
-            <Banner />
+            <Banner data={data}/>
             <Highlights />
         </Fragment>
     )

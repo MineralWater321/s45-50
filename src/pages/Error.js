@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import { Row, Col} from 'react-bootstrap';
-//import Banner from '../components/Banner';
+import Banner from '../components/Banner';
 
 export default function Error(){
-    return(        
-        <Row>
-            <Col>
-            <h1>Page Not Found</h1>
-            Go back to the <Link to="/">homepage</Link>
-            </Col>
-        </Row>
-    )    
+	const data = {
+		title: "404 - Page Not Found",
+		content: "The page you're looking for cannot be found",
+		destination: "/",
+		label: "Back home"
+	}
+
+	return (
+		<Banner data={data} />
+	)
 }
