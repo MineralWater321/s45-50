@@ -1,14 +1,17 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useContext } from 'react';
 //Import necessary components from react-bootstrap
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import {Link, NavLink } from 'react-router-dom';
+import UserContext from '../UserContext';
 
 //AppNavbar component
 export default function AppNavbar(){
     //State to store the user information stored in the login page
-    const [user, setUser] = useState(localStorage.getItem("email"));
-    console.log(user);
+    // const [user, setUser] = useState(localStorage.getItem("email"));
+    // console.log(user);
+
+    const {user} = useContext(UserContext);
 
     return(
         <Navbar bg="light" variant="light">
@@ -18,7 +21,7 @@ export default function AppNavbar(){
                 <Nav className="ml-auto">
                     <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
                     <Nav.Link as={NavLink} to="/courses" exact>Courses</Nav.Link>
-                    {(user !== null) ? 
+                    {(user.email !== null) ? 
                         <Nav.Link as={NavLink} to="/logout" exact>Logout</Nav.Link>
                         :
                         <Fragment>
