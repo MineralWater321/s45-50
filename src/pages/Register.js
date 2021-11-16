@@ -13,6 +13,7 @@ export default function Register(){
     const [mobileNo, setmobileNo] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
+    //State to determine if a registration has been made
     const [register, setRegister] = useState(false);
     const {user} = useContext(UserContext);
     //State to determine whether the submit button is enabled or not
