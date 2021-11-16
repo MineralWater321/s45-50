@@ -13,6 +13,7 @@ export default function Register(){
     const [mobileNo, setmobileNo] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
+    const [register, setRegister] = useState(false);
     const {user} = useContext(UserContext);
     //State to determine whether the submit button is enabled or not
     const [isActive, setIsActive] = useState(false);
@@ -21,7 +22,7 @@ export default function Register(){
    console.log(password1);
    console.log(password2);
    console.log(mobileNo.length);
-
+   console.log(register);
    //Function to simulate user registration
    function registerUser(e){
        e.preventDefault();
@@ -73,6 +74,7 @@ export default function Register(){
                                 text: 'Welcome to Zuitt!'
                             })                          
                             
+                            setRegister( true );
                         }
                         else{
                             Swal.fire({
@@ -104,7 +106,10 @@ export default function Register(){
     return(
         (user.id !== null) ?
             <Redirect to="/courses" />
-            :             
+            :
+            (register === true) ?
+            <Redirect to="/login" />
+            :
             <Form onSubmit={(e) => registerUser(e)}>
                 {/* Bind the input states via 2-way binding */}
                 <h1>Register</h1>
